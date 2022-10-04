@@ -15,7 +15,9 @@ import           Untyped
 ----------------------------------------------
 
 num :: Integer -> LamTerm
-num = undefined
+num n = Abs "s" (Abs "z" (suc n))
+        where suc 0 = LVar "z"
+              suc n = App (LVar "s") (suc (n-1))
 
 -------------------------------------------------
 -- Parser de Lambda Cálculo (Gramatica Extendida) 
