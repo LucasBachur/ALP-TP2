@@ -1,13 +1,5 @@
 
 -- Map
-def mapN = \f l. (isnil l) l (fst (mapT (pair nil l )))
-
-def mapT = Y (\m p. (isnil (snd p)) (fst p) (m (pair (cons (head (snd p)) (fst p)) (tail (snd p)))))
+def mapN = Y (\m f l. (isnil l) l (cons (head l) (m f (map f (tail l))))) 
 
 def map = Y (\m f l. (isnil l) l (cons (f (head l)) (m f (tail l))))
-
-def zer = zero
-def uno = suc zer
-def dos = suc uno
-def lista = cons zer (cons uno (cons dos nil))
-def mapito = mapN lista
